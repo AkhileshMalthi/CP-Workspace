@@ -50,11 +50,6 @@ def debug(*args, **kwargs):
 # Solution
 #------------------------------------------------------------------------------
 def solution() -> Union[List[int], int, str]:
-    # Read input directly from stdin
-    # Example:
-    # n = int(input())
-    # arr = list(map(int, input().split()))
-    
     # Write your solution here
     return "Answer"
     
