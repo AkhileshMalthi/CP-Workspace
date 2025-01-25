@@ -1,0 +1,199 @@
+{
+    "version": "2.0.0", // Defines the version of the tasks configuration format.
+    "tasks": [ // An array of tasks to be defined.
+      {
+        "label": "Run DSA Problem", // A unique label to identify the task.
+        "type": "shell", // Specifies that this task will execute a shell command.
+        "command": "python", // The command to be run; here, it runs Python.
+        "args": [ // Arguments passed to the command.
+          "main.py" // The Python script to execute.
+        ],
+        "presentation": { // Controls how the task is presented in VS Code.
+          "reveal": "never", // Always reveal the terminal when the task runs.
+          "panel": "shared" // Use a shared terminal panel for this task.
+        },
+        "problemMatcher": [], // No error or problem matching for this task.
+        "options": { // Additional options for the task execution.
+          "shell": { "executable": "powershell.exe" }, // Uses PowerShell as the shell.
+          "env": { // Environment variables for the shell.
+            "PYTHONIOENCODING": "utf-8" // Ensures proper Unicode handling in Python I/O.
+          }
+        }
+      },
+      {
+        "label": "Run Problem",
+        "type": "shell",
+        "command": "python3",
+        "args": [
+          // "${file}" // Uses the active file in the editor instead of main.py
+          "main.py"
+        ],
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "close": true
+        },
+        "problemMatcher": [],
+        "options": {
+          "env": {
+            "PYTHONIOENCODING": "utf-8",
+            "DEBUG": "1"
+          },
+          "timeout": "1000"
+        }
+      },
+      {
+        "label": "Run Test Cases", // A unique label to identify the task.
+        "type": "shell", // Specifies that this task will execute a shell command.
+        "command": "python3", // The command to be run; here, it runs Python3.
+        "args": [ // Arguments passed to the command.
+          "scripts/run_testcases.py" // The Python script to execute.
+        ],
+        "presentation": { // Controls how the task is presented in VS Code.
+          "reveal": "always", // Always reveal the terminal when the task runs.
+          "panel": "shared" // Use a shared terminal panel for this task.
+        },
+        "problemMatcher": [], // No error or problem matching for this task.
+        "options": { // Additional options for the task execution.
+          "env": { // Environment variables for the shell.
+            "PYTHONIOENCODING": "utf-8" // Ensures proper Unicode handling in Python I/O.
+          }
+        }
+      },
+      {
+        "label": "Time Solution",
+        "type": "shell",
+        "command": "python3",
+        "args": [
+          "-m",
+          "scripts.time_solution"
+        ],
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared"
+        },
+        "problemMatcher": [],
+        "options": {
+          "env": {
+        "PYTHONIOENCODING": "utf-8",
+        "DEBUG": "1"
+          }
+        }
+      },
+      {
+        "label": "Reset Main File",
+        "type": "shell",
+        "command": "python3",
+        "args": [
+            "scripts/reset.py"
+        ],
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared"
+        },
+        "problemMatcher": [],
+        "options": {
+            "env": {
+                "PYTHONIOENCODING": "utf-8"
+            }
+        }
+      },
+      {
+        "label": "Clear Input File",
+        "type": "shell",
+        "command": "echo '' > io_files/input.txt",
+        "presentation": {
+            "reveal": "never",
+            "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Clear Output File",
+        "type": "shell",
+        "command": "echo '' > io_files/output.txt",
+        "presentation": {
+            "reveal": "never",
+            "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Clear Debug File",
+        "type": "shell",
+        "command": "echo '' > io_files/debug.txt",
+        "presentation": {
+            "reveal": "never",
+            "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Clear Testcases File",
+        "type": "shell",
+        "command": "echo '' > io_files/testcases.txt",
+        "presentation": {
+            "reveal": "never",
+            "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Clear All IO Files",
+        "type": "shell",
+        "command": "echo '' > io_files/input.txt && echo '' > io_files/output.txt && echo '' > io_files/debug.txt && echo '' > io_files/testcases.txt",
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Save Problem",
+        "type": "shell",
+        "command": "python3",
+        "args": [
+            "scripts/save_problem.py"
+        ],
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared",
+            "focus": true
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Move Problem",
+        "type": "shell",
+        "command": "python3",
+        "args": [
+            "scripts/move_problem.py"
+        ],
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared",
+            "focus": true
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Move Active File",
+        "type": "shell",
+        "command": "python3",
+        "args": [
+            "scripts/move_active_file.py"
+        ],
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared",
+            "focus": true
+        },
+        "problemMatcher": [],
+        "options": {
+            "env": {
+                "VSCODE_ACTIVE_FILE": "${file}"
+            }
+        }
+      }
+    ]
+  }
