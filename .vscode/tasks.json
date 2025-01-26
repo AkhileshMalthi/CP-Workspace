@@ -6,7 +6,7 @@
         "type": "shell", // Specifies that this task will execute a shell command.
         "command": "python", // The command to be run; here, it runs Python.
         "args": [ // Arguments passed to the command.
-          "main.py" // The Python script to execute.
+          "${file:=main.py}" // Uses active file, falls back to main.py if no file is active
         ],
         "presentation": { // Controls how the task is presented in VS Code.
           "reveal": "never", // Always reveal the terminal when the task runs.
@@ -25,8 +25,7 @@
         "type": "shell",
         "command": "python3",
         "args": [
-          // "${file}" // Uses the active file in the editor instead of main.py
-          "main.py"
+          "${file:=main.py}"
         ],
         "presentation": {
           "reveal": "always",
