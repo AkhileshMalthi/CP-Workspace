@@ -2,6 +2,17 @@ import json
 import os
 import glob
 from importlib.util import spec_from_file_location, module_from_spec
+from collections.abc import Iterable
+
+def format_output(output):
+    if output is None:
+        return ""
+    if isinstance(output, (str, int, float)):
+        return str(output).strip()
+    if isinstance(output, Iterable):
+        # Convert each item to string and join with spaces
+        return " ".join(str(item).strip() for item in output).strip()
+    return str(output).strip()
 
 def get_latest_cph_file():
     # Get all .prob files in .cph directory with the correct path format
@@ -18,8 +29,12 @@ def get_latest_cph_file():
     return latest_file
 
 def load_solution():
-    # Import the solution function from main.py
-    spec = spec_from_file_location("main", "main.py")
+    # Get solution file path from environment variable or default to main.py
+    solution_file = os.getenv('SOLUTION_FILE', 'main.py')
+    
+    # Import the solution function from the specified file
+    module_name = os.path.splitext(os.path.basename(solution_file))[0]
+    spec = spec_from_file_location(module_name, solution_file)
     module = module_from_spec(spec)
     spec.loader.exec_module(module)
     return getattr(module, "solution", None)
@@ -53,7 +68,7 @@ def run_test_cases():
         
         for i, test in enumerate(tests, 1):
             input_data = test.get('input', '')
-            expected = str(test.get('output', '')).strip()
+            expected = format_output(test.get('output', ''))
             
             print(f"\nTest Case #{i}:")
             print(f"Input:")
@@ -66,7 +81,8 @@ def run_test_cases():
             sys.stdin = io.StringIO(input_data)
             
             try:
-                result = str(solution_func()).strip()
+                solution_output = solution_func()
+                result = format_output(solution_output)
                 print(f"Your Output:")
                 print(f"{result}")
                 print(f"Expected Output:")

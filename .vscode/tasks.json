@@ -55,7 +55,8 @@
         "problemMatcher": [], // No error or problem matching for this task.
         "options": { // Additional options for the task execution.
           "env": { // Environment variables for the shell.
-            "PYTHONIOENCODING": "utf-8" // Ensures proper Unicode handling in Python I/O.
+            "PYTHONIOENCODING": "utf-8", // Ensures proper Unicode handling in Python I/O.
+            "SOLUTION_FILE": "${file:=main.py}" // Passes the active file path as an environment variable.
           }
         }
       },
@@ -193,6 +194,19 @@
                 "VSCODE_ACTIVE_FILE": "${file}"
             }
         }
+      },
+      {
+        "label": "Open Problem URL",
+        "type": "shell",
+        "command": "python3",
+        "args": [
+            "scripts/open_problem_url.py"
+        ],
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared"
+        },
+        "problemMatcher": []
       }
     ]
   }
