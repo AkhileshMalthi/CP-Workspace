@@ -101,7 +101,7 @@
       {
         "label": "Clear Input File",
         "type": "shell",
-        "command": "echo '' > io_files/input.txt",
+        "command": "echo 'Inputs Cleared' > io_files/input.txt",
         "presentation": {
             "reveal": "never",
             "panel": "shared"
@@ -111,7 +111,7 @@
       {
         "label": "Clear Output File",
         "type": "shell",
-        "command": "echo '' > io_files/output.txt",
+        "command": "echo 'No output yet' > io_files/output.txt",
         "presentation": {
             "reveal": "never",
             "panel": "shared"
@@ -149,11 +149,11 @@
         "problemMatcher": []
       },
       {
-        "label": "Save Problem",
+        "label": "Save Main Solution",
         "type": "shell",
         "command": "python3",
         "args": [
-            "scripts/save_problem.py"
+            "scripts/move_main.py"
         ],
         "presentation": {
             "reveal": "always",
@@ -163,25 +163,11 @@
         "problemMatcher": []
       },
       {
-        "label": "Move Problem",
+        "label": "Move Solution",
         "type": "shell",
         "command": "python3",
         "args": [
-            "scripts/move_problem.py"
-        ],
-        "presentation": {
-            "reveal": "always",
-            "panel": "shared",
-            "focus": true
-        },
-        "problemMatcher": []
-      },
-      {
-        "label": "Move Active File",
-        "type": "shell",
-        "command": "python3",
-        "args": [
-            "scripts/move_active_file.py"
+            "scripts/move_solution.py"
         ],
         "presentation": {
             "reveal": "always",
@@ -214,6 +200,20 @@
         "command": "python3",
         "args": [
             "scripts/get_first_testcase.py"
+        ],
+        "presentation": {
+            "reveal": "always",
+            "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Done",
+        "dependsOrder": "sequence",
+        "dependsOn": [
+            "Move Solution",
+            "Clear Input File",
+            "Clear Output File"
         ],
         "presentation": {
             "reveal": "always",

@@ -14,18 +14,29 @@ def format_output(output):
         return " ".join(str(item).strip() for item in output).strip()
     return str(output).strip()
 
-def get_latest_cph_file():
-    # Get all .prob files in .cph directory with the correct path format
-    # Both .cph/*.prob and .cph/.*.prob patterns
+def get_current_file():
+    solution_file = os.getenv('SOLUTION_FILE', 'main.py')
+    return os.path.basename(solution_file)
+
+def get_latest_cph_file(current_file=None):
+    # Get all .prob files in .cph directory
     cph_files = glob.glob(".cph/*.prob") + glob.glob(".cph/.*.prob")
     if not cph_files:
         print("Searching in:", os.path.abspath(".cph"))
         print("Current working directory:", os.getcwd())
         raise Exception("No test files found in .cph directory")
     
-    # Get the most recently modified file
+    # First try to find a matching file for current solution
+    if current_file:
+        base_name = os.path.splitext(current_file)[0]
+        for prob_file in cph_files:
+            if base_name in prob_file:
+                print(f"Found matching test file: {prob_file}")
+                return prob_file
+    
+    # Fall back to latest file if no match found
     latest_file = max(cph_files, key=os.path.getmtime)
-    print(f"Found test file: {latest_file}")
+    print(f"No matching file found, using latest test file: {latest_file}")
     return latest_file
 
 def load_solution():
@@ -41,8 +52,9 @@ def load_solution():
 
 def run_test_cases():
     try:
-        # Get latest test file
-        test_file = get_latest_cph_file()
+        # Get current file name and find matching test file
+        current_file = get_current_file()
+        test_file = get_latest_cph_file(current_file)
         
         # Load test cases from .prob file
         with open(test_file, 'r', encoding='utf-8') as f:
