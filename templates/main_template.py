@@ -45,6 +45,37 @@ def debug(*args, **kwargs):
         with open("io_files/debug.txt", 'w') as debug_file:
             print(*args, file=debug_file, **kwargs)
 
+#------------------------------------------------------------------------------
+# Helper Functions
+#------------------------------------------------------------------------------
+
+def sieve(n: int) -> List[int]:
+    """
+    Optimized Sieve of Eratosthenes to find all prime numbers up to n.
+    """
+    if n < 2:
+        return []
+
+    # Boolean array to track prime status
+    is_prime = [True] * (n + 1)
+    is_prime[0] = is_prime[1] = False  # 0 and 1 are not prime
+    
+    # Mark even numbers (except 2) as non-prime
+    for i in range(4, n + 1, 2):
+        is_prime[i] = False
+
+    # Process only odd numbers from 3 onwards
+    for i in range(3, int(n ** 0.5) + 1, 2):
+        if is_prime[i]:
+            # Start marking from i^2, increment by 2*i (to skip even multiples)
+            for j in range(i * i, n + 1, 2 * i):
+                is_prime[j] = False
+
+    # Collect primes
+    primes = [2] if n >= 2 else []
+    primes.extend(i for i in range(3, n + 1, 2) if is_prime[i])
+    
+    return primes
 
 #------------------------------------------------------------------------------
 # Solution
