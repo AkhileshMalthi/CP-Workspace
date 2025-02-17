@@ -24,3 +24,4 @@ var/
 .venv/
 venv/
 .env
+*.py
