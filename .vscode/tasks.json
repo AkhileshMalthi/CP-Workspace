@@ -101,7 +101,7 @@
       {
         "label": "Clear Input File",
         "type": "shell",
-        "command": "echo 'Inputs Cleared' > io_files/input.txt",
+        "command": "echo '' > io_files/input.txt",
         "presentation": {
             "reveal": "never",
             "panel": "shared"
@@ -111,7 +111,7 @@
       {
         "label": "Clear Output File",
         "type": "shell",
-        "command": "echo 'No output yet' > io_files/output.txt",
+        "command": "echo '' > io_files/output.txt",
         "presentation": {
             "reveal": "never",
             "panel": "shared"

@@ -6,16 +6,18 @@ DIR = "code_submissions"
 
 def move_solution():
     try:
-        # Get source file - use active file if provided, otherwise default to main.py
-        source_file = os.getenv('VSCODE_ACTIVE_FILE', 'main.py')
-        if not os.path.exists(source_file):
-            print(f"Error: Source file {source_file} not found")
+        # Get source file - use active file if provided
+        source_file = os.getenv('VSCODE_ACTIVE_FILE')
+        if not source_file or not os.path.exists(source_file):
+            print(f"Error: No valid source file found")
             return
             
-        problem_name = input("Enter problem name: ").strip()
-        if not problem_name:
-            print("Error: Problem name cannot be empty")
-            return
+        # Get default problem name from filename without extension
+        default_name = os.path.splitext(os.path.basename(source_file))[0]
+        
+        # Ask user for problem name, use default if empty
+        user_input = input(f"Enter problem name (press Enter to use '{default_name}'): ").strip()
+        problem_name = user_input if user_input else default_name
             
         # Ensure DIR directory exists
         os.makedirs(DIR, exist_ok=True)
