@@ -1,10 +1,18 @@
 import json
+import os
 from run_testcases import get_latest_cph_file
+
+def get_current_file():
+    solution_file = os.getenv('SOLUTION_FILE', 'main.py')
+    return os.path.basename(solution_file)
 
 def get_first_testcase():
     try:
-        # Get latest test file
-        test_file = get_latest_cph_file()
+        # Get current file name
+        current_file = get_current_file()
+        
+        # Get latest test file matching the current solution
+        test_file = get_latest_cph_file(current_file)
         
         # Load test cases from .prob file
         with open(test_file, 'r', encoding='utf-8') as f:

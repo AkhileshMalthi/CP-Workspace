@@ -205,7 +205,13 @@
             "reveal": "always",
             "panel": "shared"
         },
-        "problemMatcher": []
+        "problemMatcher": [],
+        "options": {
+            "env": {
+                "PYTHONIOENCODING": "utf-8",
+                "SOLUTION_FILE": "${file:=main.py}" // Passes the active file path as an environment variable
+            }
+        }
       },
       {
         "label": "Done",
