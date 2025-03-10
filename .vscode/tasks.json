@@ -213,10 +213,21 @@
         "dependsOn": [
             "Move Solution",
             "Clear Input File",
-            "Clear Output File"
+            "Clear Output File",
+            "Close Active File"
         ],
         "presentation": {
             "reveal": "always",
+            "panel": "shared"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Close Active File",
+        "type": "shell",
+        "command": "${command:workbench.action.closeActiveEditor}",
+        "presentation": {
+            "reveal": "never",
             "panel": "shared"
         },
         "problemMatcher": []
