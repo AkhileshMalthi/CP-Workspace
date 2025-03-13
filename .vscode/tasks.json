@@ -214,6 +214,26 @@
         }
       },
       {
+        "label": "Delete This Problem",
+        "type": "shell",
+        "command": "python3",
+        "args": [
+          "scripts/delete_problem.py"
+        ],
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared",
+          "focus": true
+        },
+        "problemMatcher": [],
+        "options": {
+          "env": {
+            "PYTHONIOENCODING": "utf-8",
+            "VSCODE_ACTIVE_FILE": "${file}"
+          }
+        }
+      },
+      {
         "label": "Done",
         "dependsOrder": "sequence",
         "dependsOn": [
