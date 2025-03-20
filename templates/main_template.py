@@ -49,7 +49,16 @@ def debug(*args, **kwargs):
 # Helper Functions
 #------------------------------------------------------------------------------
 
-def sieve(n: int) -> List[int]:
+def PrefixSum(arr: List[int]) -> List[int]:
+    """
+    Returns the prefix sum array of the given list.
+    """
+    prefix_sum = [0] * (len(arr) + 1)
+    for i in range(1, len(arr) + 1):
+        prefix_sum[i] = prefix_sum[i - 1] + arr[i - 1]
+    return prefix_sum
+
+def Sieve(n: int) -> List[int]:
     """
     Optimized Sieve of Eratosthenes to find all prime numbers up to n.
     """
