@@ -1,22 +1,24 @@
 {
     "version": "2.0.0", // Defines the version of the tasks configuration format.
-    "tasks": [ // An array of tasks to be defined.
+    "tasks": [
       {
-        "label": "Run DSA Problem", // A unique label to identify the task.
-        "type": "shell", // Specifies that this task will execute a shell command.
-        "command": "python", // The command to be run; here, it runs Python.
-        "args": [ // Arguments passed to the command.
-          "${file:=main.py}" // Uses active file, falls back to main.py if no file is active
+        "label": "Run DSA Problem",
+        "type": "shell",
+        "command": "python",
+        "args": [
+          "${file:=main.py}"
         ],
-        "presentation": { // Controls how the task is presented in VS Code.
-          "reveal": "never", // Always reveal the terminal when the task runs.
-          "panel": "shared" // Use a shared terminal panel for this task.
+        "presentation": {
+          "reveal": "never",
+          "panel": "shared"
         },
-        "problemMatcher": [], // No error or problem matching for this task.
-        "options": { // Additional options for the task execution.
-          "shell": { "executable": "powershell.exe" }, // Uses PowerShell as the shell.
-          "env": { // Environment variables for the shell.
-            "PYTHONIOENCODING": "utf-8" // Ensures proper Unicode handling in Python I/O.
+        "problemMatcher": [],
+        "options": {
+          "shell": {
+            "executable": "powershell.exe"
+          },
+          "env": {
+            "PYTHONIOENCODING": "utf-8"
           }
         }
       },
@@ -42,21 +44,21 @@
         }
       },
       {
-        "label": "Run Test Cases", // A unique label to identify the task.
-        "type": "shell", // Specifies that this task will execute a shell command.
-        "command": "python3", // The command to be run; here, it runs Python3.
-        "args": [ // Arguments passed to the command.
-          "scripts/run_testcases.py" // The Python script to execute.
+        "label": "Run Test Cases",
+        "type": "shell",
+        "command": "python3",
+        "args": [
+          "scripts/run_testcases.py"
         ],
-        "presentation": { // Controls how the task is presented in VS Code.
-          "reveal": "always", // Always reveal the terminal when the task runs.
-          "panel": "shared" // Use a shared terminal panel for this task.
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared"
         },
-        "problemMatcher": [], // No error or problem matching for this task.
-        "options": { // Additional options for the task execution.
-          "env": { // Environment variables for the shell.
-            "PYTHONIOENCODING": "utf-8", // Ensures proper Unicode handling in Python I/O.
-            "SOLUTION_FILE": "${file:=main.py}" // Passes the active file path as an environment variable.
+        "problemMatcher": [],
+        "options": {
+          "env": {
+            "PYTHONIOENCODING": "utf-8",
+            "SOLUTION_FILE": "${file:=main.py}"
           }
         }
       },
@@ -75,8 +77,8 @@
         "problemMatcher": [],
         "options": {
           "env": {
-        "PYTHONIOENCODING": "utf-8",
-        "DEBUG": "1"
+            "PYTHONIOENCODING": "utf-8",
+            "DEBUG": "1"
           }
         }
       },
@@ -85,17 +87,17 @@
         "type": "shell",
         "command": "python3",
         "args": [
-            "scripts/reset.py"
+          "scripts/reset.py"
         ],
         "presentation": {
-            "reveal": "always",
-            "panel": "shared"
+          "reveal": "always",
+          "panel": "shared"
         },
         "problemMatcher": [],
         "options": {
-            "env": {
-                "PYTHONIOENCODING": "utf-8"
-            }
+          "env": {
+            "PYTHONIOENCODING": "utf-8"
+          }
         }
       },
       {
@@ -103,8 +105,8 @@
         "type": "shell",
         "command": "echo '' > io_files/input.txt",
         "presentation": {
-            "reveal": "never",
-            "panel": "shared"
+          "reveal": "never",
+          "panel": "shared"
         },
         "problemMatcher": []
       },
@@ -113,8 +115,8 @@
         "type": "shell",
         "command": "echo '' > io_files/output.txt",
         "presentation": {
-            "reveal": "never",
-            "panel": "shared"
+          "reveal": "never",
+          "panel": "shared"
         },
         "problemMatcher": []
       },
@@ -123,8 +125,8 @@
         "type": "shell",
         "command": "echo '' > io_files/debug.txt",
         "presentation": {
-            "reveal": "never",
-            "panel": "shared"
+          "reveal": "never",
+          "panel": "shared"
         },
         "problemMatcher": []
       },
@@ -133,8 +135,8 @@
         "type": "shell",
         "command": "echo '' > io_files/testcases.txt",
         "presentation": {
-            "reveal": "never",
-            "panel": "shared"
+          "reveal": "never",
+          "panel": "shared"
         },
         "problemMatcher": []
       },
@@ -143,8 +145,8 @@
         "type": "shell",
         "command": "echo '' > io_files/input.txt && echo '' > io_files/output.txt && echo '' > io_files/debug.txt && echo '' > io_files/testcases.txt",
         "presentation": {
-            "reveal": "always",
-            "panel": "shared"
+          "reveal": "always",
+          "panel": "shared"
         },
         "problemMatcher": []
       },
@@ -153,12 +155,12 @@
         "type": "shell",
         "command": "python3",
         "args": [
-            "scripts/move_main.py"
+          "scripts/move_main.py"
         ],
         "presentation": {
-            "reveal": "always",
-            "panel": "shared",
-            "focus": true
+          "reveal": "always",
+          "panel": "shared",
+          "focus": true
         },
         "problemMatcher": []
       },
@@ -167,18 +169,18 @@
         "type": "shell",
         "command": "python3",
         "args": [
-            "scripts/move_solution.py"
+          "scripts/move_solution.py"
         ],
         "presentation": {
-            "reveal": "always",
-            "panel": "shared",
-            "focus": true
+          "reveal": "always",
+          "panel": "shared",
+          "focus": true
         },
         "problemMatcher": [],
         "options": {
-            "env": {
-                "VSCODE_ACTIVE_FILE": "${file}"
-            }
+          "env": {
+            "VSCODE_ACTIVE_FILE": "${file}"
+          }
         }
       },
       {
@@ -186,11 +188,11 @@
         "type": "shell",
         "command": "python3",
         "args": [
-            "scripts/open_problem_url.py"
+          "scripts/open_problem_url.py"
         ],
         "presentation": {
-            "reveal": "always",
-            "panel": "shared"
+          "reveal": "always",
+          "panel": "shared"
         },
         "problemMatcher": []
       },
@@ -199,18 +201,18 @@
         "type": "shell",
         "command": "python3",
         "args": [
-            "scripts/get_first_testcase.py"
+          "scripts/get_first_testcase.py"
         ],
         "presentation": {
-            "reveal": "always",
-            "panel": "shared"
+          "reveal": "always",
+          "panel": "shared"
         },
         "problemMatcher": [],
         "options": {
-            "env": {
-                "PYTHONIOENCODING": "utf-8",
-                "SOLUTION_FILE": "${file:=main.py}" // Passes the active file path as an environment variable
-            }
+          "env": {
+            "PYTHONIOENCODING": "utf-8",
+            "SOLUTION_FILE": "${file:=main.py}"
+          }
         }
       },
       {
@@ -237,14 +239,14 @@
         "label": "Done",
         "dependsOrder": "sequence",
         "dependsOn": [
-            "Move Solution",
-            "Clear Input File",
-            "Clear Output File",
-            "Close Active File"
+          "Move Solution",
+          "Clear Input File",
+          "Clear Output File",
+          "Close Active File"
         ],
         "presentation": {
-            "reveal": "always",
-            "panel": "shared"
+          "reveal": "always",
+          "panel": "shared"
         },
         "problemMatcher": []
       },
@@ -253,10 +255,25 @@
         "type": "shell",
         "command": "${command:workbench.action.closeActiveEditor}",
         "presentation": {
-            "reveal": "never",
-            "panel": "shared"
+          "reveal": "never",
+          "panel": "shared"
         },
         "problemMatcher": []
+      },
+      {
+        "label": "Run Active Python File",
+        "type": "shell",
+        "command": "python3",
+        "args": [
+          "${file}"
+        ],
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared"
+        },
+        "problemMatcher": [
+          "$python"
+        ]
       }
     ]
   }
